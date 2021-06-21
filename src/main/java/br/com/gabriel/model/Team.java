@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +22,10 @@ public class Team {
 	@NotBlank
 	private String name;
 
-	@OneToMany(mappedBy = "courseDetailPK.team")
+	@OneToMany(mappedBy = "courseDetailPK.team", cascade = CascadeType.ALL)
 	private Set<CourseDetail> courseDetails = new HashSet<CourseDetail>();
 
-	@OneToMany(mappedBy = "teamDetailPK.team")
+	@OneToMany(mappedBy = "teamDetailPK.team", cascade = CascadeType.ALL)
 	private Set<TeamDetail> teamDetails = new HashSet<TeamDetail>();
 	
 	public boolean isFromStudent(Long studentId) {

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class Student {
 	@NotNull
 	private LocalDate birthdate;
 
-	@OneToMany(mappedBy = "teamDetailPK.student")
+	@OneToMany(mappedBy = "teamDetailPK.student", cascade = CascadeType.ALL)
 	private Set<TeamDetail> teamDetails = new HashSet<TeamDetail>();
 
 	public Long getStudentId() {

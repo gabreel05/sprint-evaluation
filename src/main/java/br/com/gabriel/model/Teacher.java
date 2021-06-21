@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,7 @@ public class Teacher {
 	@NotBlank
 	private String register;
 
-	@OneToMany(mappedBy = "teamDetailPK.teacher")
+	@OneToMany(mappedBy = "teamDetailPK.teacher", cascade = CascadeType.ALL)
 	private Set<TeamDetail> teamDetails = new HashSet<TeamDetail>();
 	
 	

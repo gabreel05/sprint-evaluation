@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,10 +24,10 @@ public class Course implements Serializable {
 	@NotBlank
 	private String name;
 
-	@OneToMany(mappedBy = "subjectDetailPK.course")
+	@OneToMany(mappedBy = "subjectDetailPK.course", cascade = CascadeType.ALL)
 	private Set<SubjectDetail> subjectDetails = new HashSet<SubjectDetail>();
 
-	@OneToMany(mappedBy = "courseDetailPK.course")
+	@OneToMany(mappedBy = "courseDetailPK.course", cascade = CascadeType.ALL)
 	private Set<CourseDetail> courseDetails = new HashSet<CourseDetail>();
 
 	public Long getCourseId() {

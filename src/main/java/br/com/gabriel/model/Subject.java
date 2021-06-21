@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Subject implements Serializable {
 	@NotBlank
 	private String name;
 
-	@OneToMany(mappedBy = "subjectDetailPK.subject")
+	@OneToMany(mappedBy = "subjectDetailPK.subject", cascade = CascadeType.ALL)
 	private Set<SubjectDetail> subjectDetails = new HashSet<SubjectDetail>();
 
 	public boolean isFromCourse(Long courseId) {
