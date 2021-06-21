@@ -2,4 +2,4 @@
 
 ### Esse foi o Diagrama de Entidade e Relacionamento gerado pela ferramenta MySQL Workbench
 
-![Alt text](DER.png)
+![Alt text](https://github.com/gabreel05/sprint-evaluation/blob/main/DER.PNG)
