@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container mt-5">
+		<a href="/student"> <span class="material-icons mb-3">arrow_back</span>
+		</a>
+		<h2>Alterar aluno</h2>
+		<h2>Por favor, preencha todos os campos para alterar corretamente</h2>
+
+		<form
+			th:action="@{/student/update_student/{id}(id=${student.studentId})}"
+			class="card-body" th:object="${student}" method="PUT">
+			<div class="form-group">
+				<label for="name">Nome</label> <input th:field="*{name}"
+					th:value="*{name}" class="form-control" type="text"
+					placeholder="Nome do aluno"> <small>Informe qual o
+					nome do aluno</small>
+			</div>
+			<div class="form-group">
+				<label for="gender">Sexo</label> <select th:field="*{gender}"
+					name="gender" id="gender" class="form-select">
+					<option th:value="M" th:text="Masculino">
+					<option th:value="F" th:text="Feminino">
+				</select> <small>Informe qual o sexo do aluno</small>
+
+			</div>
+			<div class="form-group">
+				<label for="registration">Matrícula</label> <input
+					th:field="*{registration}" class="form-control" type="text"
+					placeholder="Matrícula do aluno"> <small>Informe
+					qual a matrícula do aluno</small>
+			</div>
+			<div class="form-group">
+				<label for="birthdate">Data de nascimento</label> <input
+					th:field="*{birthdate}" class="form-control"
+					placeholder="Data de nascimentodo aluno"> <small>Informe
+					qual o nome do aluno</small>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome do professor</th>
+						<th>Adicionado</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="teacher : ${teachers}" name="*{teacherDetails}">
+						<td th:text="${teacher.name}">
+						<td><input type="checkbox"
+							th:checked="${teacher.isFromStudent(student.studentId)}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome da turma</th>
+						<th>Adicionado</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="team : ${teams}" name="*{teamDetails}">
+						<td th:text="${team.name}">
+						<td><input type="checkbox"
+							th:checked="${team.isFromStudent(student.studentId)}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<button class="btn btn-primary mt-3" type="submit">Cadastrar</button>
+		</form>
+	</div>
+</body>
+</html>

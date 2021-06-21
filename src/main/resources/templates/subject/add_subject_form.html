@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container mt-5">
+		<a href="/subject"> <span class="material-icons mb-3">arrow_back</span>
+		</a>
+		<h2>Adicionar disciplina</h2>
+
+		<form action="/subject/add_subject" class="card-body"
+			th:object="${subject}" method="POST">
+			<div class="form-group">
+				<label for="name">Nome</label> <input th:field="*{name}"
+					th:errorclass="is-invalid" class="form-control" type="text"
+					placeholder="Nome da disciplina"> <small>Informe
+					qual o nome da disciplina</small>
+				<div class="invalid-feedback" th:errors="${subject.name}">Erros</div>
+			</div>
+			<button class="btn btn-primary mt-3" type="submit">Cadastrar</button>
+		</form>
+	</div>
+</body>
+</html>

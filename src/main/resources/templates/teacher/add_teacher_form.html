@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container mt-5">
+		<a href="/teacher"> <span class="material-icons mb-3">arrow_back</span>
+		</a>
+		<h2>Adicionar professor</h2>
+
+		<form action="/teacher/add_teacher" class="card-body"
+			th:object="${teacher}" method="POST">
+			<div class="form-group">
+				<label for="name">Nome</label> <input th:field="*{name}"
+					th:errorclass="is-invalid" class="form-control" type="text"
+					placeholder="Nome do professor"> <small>Informe
+					qual o nome do professor</small>
+				<div class="invalid-feedback" th:errors="${teacher.name}">Erros</div>
+			</div>
+			<div class="form-group">
+				<label for="gender">Sexo</label> <select th:field="*{gender}"
+					name="gender" id="gender" class="form-select">
+					<option th:value="M" th:text="Masculino">
+					<option th:value="F" th:text="Feminino">
+				</select> <small>Informe qual o sexo do professor</small>
+				<div class="invalid-feedback" th:errors="${teacher.name}">Erros</div>
+			</div>
+			<div class="form-group">
+				<label for="register">Registro</label> <input th:field="*{register}"
+					th:errorclass="is-invalid" class="form-control" type="text"
+					placeholder="Registro do professor"> <small>Informe
+					qual o registro do professor</small>
+				<div class="invalid-feedback" th:errors="${teacher.name}">Erros</div>
+			</div>
+			<button class="btn btn-primary mt-3" type="submit">Cadastrar</button>
+		</form>
+	</div>
+</body>
+</html>

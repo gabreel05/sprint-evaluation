@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-5">
+		<a href="/"> <span class="material-icons mb-3">arrow_back</span>
+		</a>
+		<div class="d-flex justify-content-between mb-5">
+			<h2>Turmas</h2>
+			<h2>
+				<a href="/team/add_team_form"> Adicionar Turma </a>
+			</h2>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+
+					<th>Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="team : ${teams}">
+					<td th:text="${team.name}">
+					<td><a th:href="@{/team/delete_team/{id}(id=${team.teamId})}">
+							<span class="material-icons">delete</span>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome dos alunos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="teamDetail : ${teamDetails}">
+					<td th:text="${teamDetail.teamDetailPK.student.name}">
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</body>
+</html>
